@@ -1,0 +1,35 @@
+---
+# tasks file for wordpress
+
+# WordPress Configuration
+- name: create /var/www/it-cl.ru directory for unarchiving
+  file:
+    path: /var/www/it-cl.ru
+    state: directory
+
+- name: Download and unpack latest WordPress
+  unarchive:
+    src: https://wordpress.org/wordpress-6.1.1.tar.gz
+    dest: "/var/www/it-cl.ru"
+    remote_src: yes
+    creates: "/var/www/it-cl.ru/wordpress"
+
+- name: Set ownership
+  file:
+    path: "/var/www/it-cl.ru"
+    state: directory
+    recurse: yes
+    owner: www-data
+    group: www-data
+
+- name: Set permissions for directories
+  shell: "/usr/bin/find /var/www/it-cl.ru/wordpress/ -type d -exec chmod 750 {} \\;"
+
+
+- name: Set permissions for files
+  shell: "/usr/bin/find /var/www/it-cl.ru/wordpress/ -type f -exec chmod 640 {} \\;"
+
+- name: Set up wp-config
+  template:
+    src: "wp-config.php.j2"
+    dest: "/var/www/it-cl.ru/wordpress/wp-config.php"

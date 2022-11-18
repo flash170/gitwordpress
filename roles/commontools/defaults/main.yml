@@ -1,0 +1,15 @@
+commontools:
+ - vim
+ - net-tools
+ - mc
+ - nano
+ - wget
+ - curl
+ - tree
+ - htop
+ - iotop
+ - bash-completion
+ - zip
+ - tzdata
+
+timezone: Europe/Moscow

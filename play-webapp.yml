@@ -1,0 +1,8 @@
+---
+- hosts: "{{ target }}"
+  become: yes
+  become_method: sudo
+  roles:
+    - {role: nginx}
+    - {role: php}
+    - {role: wordpress}

@@ -1,0 +1,25 @@
+---
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{ ssl_cert_path }}/private/"
+    state: directory
+
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: "{{ ssl_cert_path }}/crt/"
+    state: directory
+
+- name: Install crt
+  copy:
+    src: "{{ ssl_cert_source_path }}/certificate.crt"
+    dest: "{{ nginx_ssl_crt }}"
+    mode: 0660 
+    owner: root
+
+- name: Install crt
+  copy:
+    src: "{{ ssl_cert_source_path }}/private.key"
+    dest: "{{ nginx_ssl_key }}"
+    mode: 0660 
+    owner: root
+
