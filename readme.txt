@@ -25,7 +25,7 @@ app1                       : ok=3    changed=2    unreachable=0    failed=0    s
 app2                       : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 
-ansible-playbook play-commontools.yml -u ubuntu --extra-vars "target=production" --ask-vault-pass 
+ansible-playbook play-commontools.yml -u ubuntu --extra-vars "target=app" --ask-vault-pass 
 
 fatal: [app1]: FAILED! => {
     "changed": false,
