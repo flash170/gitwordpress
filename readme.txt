@@ -27,3 +27,12 @@ app2                       : ok=3    changed=2    unreachable=0    failed=0    s
 
 ansible-playbook play-commontools.yml -u ubuntu --extra-vars "target=production" --ask-vault-pass 
 
+fatal: [app1]: FAILED! => {
+    "changed": false,
+    "msg": "AnsibleUndefinedVariable: 'mysql_db' is undefined"
+}
+<192.168.1.202> (0, b'', b'')
+fatal: [app2]: FAILED! => {
+    "changed": false,
+    "msg": "AnsibleUndefinedVariable: 'mysql_db' is undefined"
+}
